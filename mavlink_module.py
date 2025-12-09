@@ -93,7 +93,6 @@ class TelemetryStore:
             return None
         return float(lat), float(lon), float(alt) if alt is not None else None
 
-
 class MavlinkModule:
     """High-level controller that keeps telemetry updated in a background thread."""
 
