@@ -1,0 +1,23 @@
+// Терминал 1
+cd /home/dmitry/Документы/KTbo4-11/VPK_5/ТП/JmavSim/PX4-Autopilot
+make px4_sitl jmavsim
+
+
+//Терминал 2
+cd /home/dmitry/Документы/KTbo4-11/VPK_5/ТП/JmavSim
+source .venv/bin/activate
+cd PX4-Autopilot
+python Tools/mavlink_shell.py udp:127.0.0.1:14550
+
+param set CBRK_SUPPLY_CHK 894281
+param set COM_ARM_WO_GPS 1
+commander arm
+commander takeoff          
+commander mode auto:loiter 
+
+//Терминал 3
+cd /home/dmitry/Документы/KTbo4-11/VPK_5/ТП/JmavSim
+source .venv/bin/activate
+python mavlink_module.py --connect udp:127.0.0.1:14540 interactive
+
+goto 47.67854 8.57788 10 nan 5
